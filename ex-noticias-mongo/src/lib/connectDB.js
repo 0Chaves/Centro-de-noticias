@@ -1,3 +1,4 @@
+'use server'
 // Import the mongoose library
 import mongoose from 'mongoose';
 //const mongoose = require('mongoose') //faz a mesma coisa que a linha 2

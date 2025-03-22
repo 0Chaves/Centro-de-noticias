@@ -6,6 +6,6 @@ const noticiaSchema = new mongoose.Schema({
     imagem: String
 })
 
-const Noticia = mongoose.model('Noticia', noticiaSchema)
+const Noticia = mongoose.models.Noticia || mongoose.model('Noticia', noticiaSchema)
 
 export default Noticia

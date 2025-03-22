@@ -1,6 +1,6 @@
 'use server'
 import connectDB from "./connectDB";
-import Noticia from "@/models/noticia";
+import Sugestao from "@/models/sugestao";
 
 async function connDB() {
     await connectDB()
@@ -11,17 +11,18 @@ async function connDB() {
             console.log("Erro ao conectar com o banco.")
             console.log(err)
         })
-    
-    
 }
 
-export async function getNoticias() {
+export async function gravaSugestao(sugestao){
+    console.log("entrou na func")
     await connDB()
-    await new Promise(resolve => setTimeout(resolve, 2000)) //delay para ver a pagina de loading
-    return await Noticia.find({})
+    const novaSugestao = new Sugestao(sugestao)
+    console.log("schema criado")
+    await novaSugestao.save()
+    console.log("salvo")
 }
 
-export async function getNoticia(id) {
+export async function getSugestoes(){
     await connDB()
-    return await Noticia.findById(id)
+    return await Sugestao.find({})
 }
